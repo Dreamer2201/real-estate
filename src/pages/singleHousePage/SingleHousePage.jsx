@@ -1,6 +1,10 @@
 import React from 'react'
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { getHouseById } from '../../redux/api/housesAPI';
+import SliderImgsHouse from '../../components/houses/SliderImgs';
 // import { Swiper, SwiperSlide } from 'swiper/react';
 // import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
 import 'swiper/css';
@@ -13,7 +17,15 @@ import SingleHouse from '../../components/houses/SingleHouse';
 
 export default function SinglePage() {
 
-  const house = useSelector(({ houses }) => houses.houseDetails)
+    const house = useSelector(({ houses }) => houses.houseDetails)
+
+    const dispatch = useDispatch()
+
+    const id = house._id
+
+    useEffect(() => {
+        dispatch(getHouseById(house.id));
+    }, [id]); 
 
   const navigate = useNavigate('/');
 
@@ -25,59 +37,7 @@ export default function SinglePage() {
     <>
       <button type="button" onClick={goBackHomePage}>home page</button>
       <button type="button" onClick={goBackHousesPage}>houses list</button>
-      {house ? <SingleHouse house={house} /> : <p>Something went wrong</p>}
-      {/* <WrapperSinglePage>
-        <ThumbSwiper>
-        <Swiper
-          modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
-          navigation
-          pagination={{ clickable: true }}
-          scrollbar={{ draggable: true }}
-          autoplay={{
-            delay: 2000,
-            disableOnInteraction: false
-        }}
-        spaceBetween={10}
-        slidesPerView={1}
-        onSlideChange={() => console.log('slide change')}
-        onSwiper={(swiper) => console.log(swiper)}
-        >
-          <SwiperSlide>
-          <ThumbImg>
-            <StyledImg src={img1} alt="house foro"/>
-          </ThumbImg>
-        </SwiperSlide>
-        <SwiperSlide>
-          <ThumbImg>
-            <StyledImg src={img2} alt="house foro"/>
-          </ThumbImg>
-        </SwiperSlide>
-        <SwiperSlide>
-          <ThumbImg>
-            <StyledImg src={img3} alt="house foro"/>
-          </ThumbImg>
-        </SwiperSlide>
-        <SwiperSlide>
-          <ThumbImg>
-            <StyledImg src={img4} alt="house foro"/>
-          </ThumbImg>
-        </SwiperSlide>
-        <SwiperSlide>
-          <ThumbImg>
-            <StyledImg src={imgPlan1} alt="house plan"/>
-          </ThumbImg>
-        </SwiperSlide>
-        <SwiperSlide>
-          <ThumbImg>
-            <StyledImg src={imgPlan2} alt="house plan"/>
-          </ThumbImg>
-        </SwiperSlide>
-        </Swiper>
-        </ThumbSwiper>
-        <HouseDetails>
-          Description:
-        </HouseDetails>
-      </WrapperSinglePage> */}
+      {house ? <SliderImgsHouse house={house} /> : <p>Something went wrong</p>}
     </>
   )
 }

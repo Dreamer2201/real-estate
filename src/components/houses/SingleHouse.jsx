@@ -1,33 +1,62 @@
 import React from 'react'
-import styles from './housesItem.module.scss'
+import { useState, useRef } from 'react';
+import styles from './sliderImgs.module.scss'
 
 
 export default function SingleHouse({house}) {
 
+    const [isActive, setIsActive] = useState(0)
+
     const { _id, imgs, title, total_area, bedrooms_quantity, holl, living_room, kitchen, wardrobe, bathroom_quantity, terrace, garage } = house;
 
-    console.log(house.title)
-    console.log(house.imgs)
-
+    const handleRadio = (e) => {
+        setIsActive(e.target.value)
+    }
 
     return (
-        <li className={styles.containerItem}>
-                {imgs && <img className={styles.imgHouse} src= {`http://localhost:4000/${imgs[1]}`} alt='house' width="100" height="100"/>}
-                {/* <img className={styles.imgHouse} src= {`http://localhost:4000/${imgs[1]}`} alt='house' width="100" height="100"/> */}
-                <div>
-                    <h2>{title}</h2>
-                    <ul>
-                        <li><p>Total area: {total_area} m2 </p></li>
-                        <li><p>Bedrooms: {bedrooms_quantity} </p></li>
-                        <li><p>Holl: {holl} m2 </p></li>
-                        <li><p>Living room: {living_room} m2 </p></li>
-                        <li><p>Kitchen: {kitchen} m2 </p></li>
-                        <li><p>Wardrobe: {wardrobe} m2 </p></li>
-                        <li><p>Bathrooms: {bathroom_quantity}</p></li>
-                        <li><p>Terrace: {terrace} m2 </p></li>
-                        <li><p>Garage: {garage} m2 </p></li>
+        <>
+        {house && 
+            <section>
+                <div class="container">
+                    <div class="carousel">
+                    {imgs && imgs.map((item, index) => {return <input type="radio" checked={isActive === index} name="slides" id={index} value={index} onChange={handleRadio} />})}
+                    
+                    <ul class="carousel__slides">
+                
+                    {imgs && imgs.map((itemUrl, index) => {
+                        return <li className={styles.carousel__slide} key={index} >
+                        <figure>
+                            <div>
+                            {imgs && imgs && <img src= {`http://localhost:4000/${itemUrl}`} alt='house' width="500" height="500"/>}
+                            </div>
+                                <figcaption>
+                                    <span>{title}</span>
+                                            <p>Total area: {total_area} m2 </p>
+                                            <p>Bedrooms: {bedrooms_quantity} </p>
+                                            <p>Holl: {holl} m2 </p>
+                                            <p>Living room: {living_room} m2 </p>
+                                            <p>Kitchen: {kitchen} m2 </p>
+                                            <p>Wardrobe: {wardrobe} m2 </p>
+                                            <p>Bathrooms: {bathroom_quantity}</p>
+                                            <p>Terrace: {terrace} m2 </p>
+                                            <p>Garage: {garage} m2 </p>
+                                        </figcaption>
+                                </figure>
+                            </li>
+                            })}
                     </ul>
+
+                    <ul class="carousel__thumbnails">
+                        {imgs && imgs.map((itemUrl, index) => {
+                            return <li key={index}>
+                            <label htmlFor={index}><img src={`http://localhost:4000/${itemUrl}`} alt="" onChange={handleRadio} /></label>
+                        </li>
+                        })}
+                    </ul>
+
+                    </div>
                 </div>
-        </li>
-    )
-}
+            </section>
+            }
+            </>
+)}

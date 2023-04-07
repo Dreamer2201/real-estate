@@ -4,10 +4,10 @@ import { useAuth } from '../hooks/useAuth';
 import { removeUser } from '../redux/auth/userSlise';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import img1 from '../images/images-house/7.jpg'
-import img2 from '../images/house7/2.jpg'
-import img3 from '../images/images-house/8.jpg'
-import img4 from '../images/images-house/9.jpg'
+import img1 from '../images/house4/1.jpg'
+import img2 from '../images/house1/1.jpg'
+import img3 from '../images/house2/3.jpg'
+import img4 from '../images/house3/2.jpg'
 
 import { ThumbImg, StyledImg } from './StylesBgSlider';
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';

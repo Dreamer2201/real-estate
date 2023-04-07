@@ -8,15 +8,10 @@ import styles from './housesList.module.scss'
 
 export default function HousesList() {
 
-    const [isModalOpen, setIsModalOpen] = useState(false);
-
     const houses = useSelector(({ houses }) => houses.houses)
 
     const dispatch = useDispatch()
-    
-    const toggleModal = () => {
-        setIsModalOpen(!isModalOpen)
-    }
+
     
     useEffect(() => {
         dispatch(getAllHouses());
@@ -26,6 +21,7 @@ export default function HousesList() {
     const elements = houses.map((item) => {
          return (<HouseItem key={item._id} house={item} />)
     });
+    
     return (
         <div>
             <ul className={styles.housesList}> {elements}</ul>
