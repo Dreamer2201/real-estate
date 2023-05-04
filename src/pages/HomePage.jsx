@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
 import { useAuth } from '../hooks/useAuth';
-import { removeUser } from '../redux/auth/userSlise';
+import { removeUser } from '../redux/auth/userSlice';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import img1 from '../images/house4/1.jpg'

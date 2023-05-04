@@ -1,13 +1,13 @@
 import React from 'react'
-import { useState, useRef } from 'react';
-import styles from './sliderImgs.module.scss'
+import { useState } from 'react';
+import styles from './sliderImages.module.scss'
 
 
 export default function SingleHouse({house}) {
 
     const [isActive, setIsActive] = useState(0)
 
-    const { _id, imgs, title, total_area, bedrooms_quantity, holl, living_room, kitchen, wardrobe, bathroom_quantity, terrace, garage } = house;
+    const { imgs, title, total_area, bedrooms_quantity, holl, living_room, kitchen, wardrobe, bathroom_quantity, terrace, garage } = house;
 
     const handleRadio = (e) => {
         setIsActive(e.target.value)

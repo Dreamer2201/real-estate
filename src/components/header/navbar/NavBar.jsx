@@ -4,14 +4,23 @@ import { useState } from 'react';
 import Submenu from './Submenu';
 import {StyledNavLink, StyledNavList, StyledNavLinkReg, StyledNavLinkLog, BtnBurgerMenu, IconSubMenuProjects, ProjectsWrapper } from './StyledNavBar';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
+import { RegisterForm } from '../../Auth/signUp/RegisterForm';
+import { LoginForm } from '../../Auth/login/LoginForm'
 
 
 export default function NavBar() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isBurger, setIsBurger] = useState(false);
+  const [isModalSignUp, setIsModalSignUp] = useState(false)
   const [isSubMenuShow, setisSubMenuShow] = useState(false)
 
-  const toggleModal = () => {
-    setIsModalOpen(!isModalOpen)
+  const toggleBurger = () => {
+    setIsBurger(!isBurger)
+  }
+  const toggleSignUp = () => {
+    setIsModalSignUp(!isModalSignUp)
+  }
+  const toggleSignIn = () => {
+    setIsModalSignUp(!isModalSignUp)
   }
   const toggleSubMenu = () => {
     setisSubMenuShow(!isSubMenuShow);
@@ -29,9 +38,11 @@ export default function NavBar() {
             </ProjectsWrapper>
             <StyledNavLink to="/news"> News </StyledNavLink>
             <StyledNavLink to="/addhouse">Add house</StyledNavLink>
-            <StyledNavLinkReg to="/register"> Sign up </StyledNavLinkReg>
-            <StyledNavLinkLog to="/login"> Sign in </StyledNavLinkLog>
-            {isModalOpen ? <BurgerMenu onClose={toggleModal} /> : <BtnBurgerMenu onClick={toggleModal} type='button'>=</BtnBurgerMenu>}
+            <StyledNavLinkReg type='button' onClick={() => toggleSignUp()} > Sign up </StyledNavLinkReg>
+            <StyledNavLinkLog type='button' onClick={() => toggleSignUp()} > Sign in </StyledNavLinkLog>
+            {isBurger ? <BurgerMenu onClose={toggleBurger} /> : <BtnBurgerMenu onClick={toggleBurger} type='button'>=</BtnBurgerMenu>}
+            {isModalSignUp ? <RegisterForm closeSignUp={toggleSignUp}  /> : null}
+            {/* {isModalSignUp ? <LoginForm closeSignUp={toggleSignUp}  /> : null} */}
         </StyledNavList>
   )
 }

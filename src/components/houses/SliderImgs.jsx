@@ -1,11 +1,11 @@
 import React from 'react'
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
-import styles from './sliderImgs.module.scss'
+import styles from './sliderImages.module.scss'
 
 export default function SliderImgsHouse({house}) {
 
-  const { _id, imgs, title, total_area, bedrooms_quantity, holl, living_room, kitchen, wardrobe, bathroom_quantity, terrace, garage } = house;
+  const { imgs, title, total_area, bedrooms_quantity, holl, living_room, kitchen, wardrobe, bathroom_quantity, terrace, garage } = house;
    
    return (
     <div>

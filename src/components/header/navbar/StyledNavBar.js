@@ -26,17 +26,17 @@ const StyledNavLink = styled(NavLink)`
     }
 `;
 
-
-
-const StyledNavLinkReg = styled(NavLink)`
-    text-decoration: none;
-    font-size: 18px;
-    color: #fff;
+const StyledNavLinkReg = styled.button`
+    border-radius: 10px;
+    padding: 10px auto;
+    border: transparent;
+    width: 100px;
+    font-size: 14px;
+    color: #ffffff;
+    background-color: rgba(235, 164, 52);
+    box-shadow: 7px -4px 27px 10px rgba(150,136,117,1);
 `
-const StyledNavLinkLog = styled(NavLink)`
-    text-decoration: none;
-    font-size: 18px;
-    color: #fff;
+const StyledNavLinkLog = styled(StyledNavLinkReg)`
 `
 const BtnBurgerMenu = styled.button`
 @media (max-width: 767px) {

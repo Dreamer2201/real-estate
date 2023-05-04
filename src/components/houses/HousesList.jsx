@@ -12,7 +12,7 @@ export default function HousesList() {
 
     const dispatch = useDispatch()
 
-    
+    console.log(typeof(null))
     useEffect(() => {
         dispatch(getAllHouses());
     }, [dispatch]);   

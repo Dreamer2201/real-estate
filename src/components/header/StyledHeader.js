@@ -4,7 +4,6 @@ import imgBgHeader from '../../images/img-header/mountains.png'
 const StyledHeader = styled.header`
 position: relative;
     height: 100px;
-    margin-bottom: 20px;
     display: flex;
     justify-content: start;
     gap: 20px;

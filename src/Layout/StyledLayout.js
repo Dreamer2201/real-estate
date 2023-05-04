@@ -5,5 +5,10 @@ max-width: 1200px;
 padding-left: 15px;
 padding-right: 15px;
 `
-
-export {Container}
+const ContainerMain = styled.main `
+    // background-color: rgb(232, 204, 179);
+    background-color: #fff;
+    min-height: calc(100vh - 180px);
+     
+`
+export {Container, ContainerMain}
